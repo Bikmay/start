@@ -1,0 +1,21 @@
+.header{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 42px;
+  display: inline-block;
+    margin-left: 20px;
+}
+
+.addOrder{
+  display: inline-block;
+  right: 27px;
+    top: 20px;
+    float: right;
+}
+.headDiv{
+  height: 80px;
+  position: relative;
+}
+
+li{
+  display: inline-block;
+}

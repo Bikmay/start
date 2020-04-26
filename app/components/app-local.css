@@ -1,0 +1,18 @@
+.header {
+  height: 4vh;background-color: white}
+
+
+ul{
+  height: 4vh;
+}
+
+.parent{
+  height: 100%;
+  width: 100%;
+}
+
+.сontainer{
+  width:82vw;
+  display: inline-block;
+  height: 100%;
+}

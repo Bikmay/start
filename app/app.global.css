@@ -1,0 +1,100 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+
+body {
+  position: relative;
+  height: 100%;
+
+
+}
+
+
+section{
+  height: 100%;
+}
+
+
+h2 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+p {
+  font-size: 24px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: white;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+#root{
+  height: 100%;
+}
+
+.main-header{
+  height: 4vh;
+}
+
+header {
+  height: 4vh;
+  background-color: white;
+}
+
+
+.ant-layout-header {
+  height: 4vh;
+  background-color: white;
+}
+
+.general-div{
+  height: 100%;
+  width: 100%;
+
+
+}
+
+
+.container{
+  display: inline;
+  width: 84vw;
+  height: 100%;
+  float: left;
+}
+
+section {
+  display: inline ;
+  width: 16vw;
+
+}
+
+aside{
+ max-width:250px !important;
+ min-width: 130px !important;
+  flex: 0 0 16vw !important;
+}
+
+.sl{  
+  height: 100%;
+  width: 16vw;
+  float: left;
+}
