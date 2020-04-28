@@ -84,7 +84,9 @@ const createWindow = async () => {
   });
 
   mainWindow.on('resize', () => {
-    UILogic.setWindowHeight(mainWindow.innerHeight);
+    const size = mainWindow.getSize();
+    console.log(size);
+    UILogic.calculateCountRows(size[1]);
   });
 
   mainWindow.on('closed', () => {
