@@ -93,8 +93,12 @@ aside{
   flex: 0 0 16vw !important;
 }
 
-.sl{  
+.sl{
   height: 100%;
   width: 16vw;
   float: left;
+}
+
+.ant-select-dropdown-menu{
+  height: auto;
 }

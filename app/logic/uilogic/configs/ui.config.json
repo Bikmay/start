@@ -1,0 +1,5 @@
+{
+  "typeItems": ["letters", "words", "Sheet A4"],
+  "currency": ["RUB", "USD", "EUR"],
+  "countrys": ["Russia", "USA", "China", "England", "Germany", "France"]
+}

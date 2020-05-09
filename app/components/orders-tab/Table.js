@@ -10,14 +10,8 @@ type Props = {};
 export default class TableComponent extends Component<Props> {
   props: Props;
 
-  static numberRows;
-
-  changePageSize(value) {
-    this.numberRows = value;
-  }
-
   render() {
-    console.log(document.body.clientHeight);
+    //  console.log(document.body.clientHeight);
     const columns = [
       {
         title: 'Name',
@@ -222,13 +216,10 @@ export default class TableComponent extends Component<Props> {
       <div>
         <Table
           className={styles.table}
-          pagination={{
-            pageSize: 12
-          }}
+          pagination={UILogic.obj1}
           columns={columns}
           dataSource={data}
         />
-        <p>fgffffffffffffffffffff</p>
       </div>
     );
   }

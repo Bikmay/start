@@ -1,0 +1,11 @@
+.phone{
+    border: 1px solid !important;
+    border-color: #d8d8d8 !important;
+    outline-color:#40a9ff;
+    border-radius: 4px;
+    height: 38px;
+    width: 100%;
+    padding: 7px;
+}
+
+

@@ -5,17 +5,25 @@
     margin-left: 20px;
 }
 
-.addOrder{
-  display: inline-block;
-  right: 27px;
-    top: 20px;
+.buttonAdd{
+
+    right: 98px;
+    display: inline-block;
     float: right;
+    margin-right: 35px;
+    margin-top: 25px;
+
 }
 .headDiv{
   height: 80px;
   position: relative;
+  display: inline;
 }
 
 li{
   display: inline-block;
+}
+
+.test ul{
+  height: 120;
 }

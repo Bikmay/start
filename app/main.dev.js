@@ -12,6 +12,7 @@
  */
 import { app, BrowserWindow } from 'electron';
 import { autoUpdater } from 'electron-updater';
+import { modal } from 'electron-modal';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import UILogic from './components/UILogic';
