@@ -1,11 +1,18 @@
 import React from 'react';
-import { Form, Input, Select } from 'antd';
+import { Form, Input, Select, AutoComplete } from 'antd';
 import NumberFormat from 'react-number-format';
 import styles from './AddClientForm.css';
 import ConfigLogic from '../../../logic/uilogic/ConfigLogic';
 
 export default class AddClientForm extends React.Component {
+  constructor() {
+    super();
+    const [result, setResult] = useState([]);
+  }
+
   render() {
+    const [result, setResult] = useState([]);
+
     const layout = {
       labelCol: {
         span: 5
@@ -22,16 +29,46 @@ export default class AddClientForm extends React.Component {
       <Option key={c.value}>{c.text}</Option>
     ));
 
-    ConfigLogic.getTypeCurrency();
-    /* const currencyMap = ConfigLogic.getTypeCurrency();
+    const currencyMap = ConfigLogic.getTypeCurrency();
     const currency = currencyMap.map(q => (
       <Option key={q.value}>{q.text}</Option>
-    )); */
+    ));
+
+    const handleSearch = value => {
+      let res = [];
+
+      if (!value || value.indexOf('@') >= 0) {
+        res = [];
+      } else {
+        res = ['gmail.com', '163.com', 'qq.com'].map(
+          domain => `${value}@${domain}`
+        );
+      }
+
+      setResult(res);
+    };
+
+    const children = result.map(email => (
+      <Option key={email} value={email}>
+        {email}
+      </Option>
+    ));
 
     return (
       <Form {...layout} name="basic">
         <Form.Item label="Name" name="name">
           <Input />
+        </Form.Item>
+        <Form.Item label="Company" name="company">
+          <AutoComplete
+            style={{
+              width: 200
+            }}
+            onSearch={handleSearch}
+            placeholder="input here"
+          >
+            {children}
+          </AutoComplete>
         </Form.Item>
         <Form.Item label="Country" name="country">
           <Select>{countrys}</Select>

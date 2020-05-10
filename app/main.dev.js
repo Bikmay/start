@@ -65,7 +65,8 @@ const createWindow = async () => {
     minHeight: 600,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    autoHideMenuBar: true
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);

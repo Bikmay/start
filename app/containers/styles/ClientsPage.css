@@ -1,0 +1,15 @@
+.header
+{
+  margin : 2vw;
+  display: inline-block;
+  font-size: 33px;
+  margin-top: 1.5vw;
+}
+
+.button{
+  display: inline-block;
+}
+
+.headDiv{
+  height: 90px;
+}

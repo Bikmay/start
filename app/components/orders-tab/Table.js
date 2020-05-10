@@ -215,6 +215,7 @@ export default class TableComponent extends Component<Props> {
     return (
       <div>
         <Table
+          size="small"
           className={styles.table}
           pagination={UILogic.obj1}
           columns={columns}

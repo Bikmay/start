@@ -7,6 +7,10 @@ import styles from './AddClientModal.css';
 export default class AddClientModal extends React.Component {
   state = { visible: false };
 
+  constructor() {
+    this.a = 's';
+  }
+
   showModal = () => {
     this.setState({
       visible: true
@@ -29,7 +33,7 @@ export default class AddClientModal extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.buttonAddClientDiv}>
         <Button type="primary" onClick={this.showModal}>
           Add client
         </Button>

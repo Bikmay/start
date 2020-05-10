@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
+import styles from './table.css';
 
 type Props = {};
 
@@ -76,6 +77,13 @@ export default class TableComponent extends Component<Props> {
       }
     ];
 
-    return <Table columns={columns} dataSource={data} size="small" />;
+    return (
+      <Table
+        className={styles.table}
+        columns={columns}
+        dataSource={data}
+        size="small"
+      />
+    );
   }
 }
