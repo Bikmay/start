@@ -32,6 +32,7 @@ module.exports = api => {
     plugins: [
       // Stage 0
       require('@babel/plugin-proposal-function-bind'),
+      require('@babel/plugin-proposal-class-properties'). 
 
       // Stage 1
       require('@babel/plugin-proposal-export-default-from'),

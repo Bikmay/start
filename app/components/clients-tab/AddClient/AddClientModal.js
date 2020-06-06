@@ -7,10 +7,6 @@ import styles from './AddClientModal.css';
 export default class AddClientModal extends React.Component {
   state = { visible: false };
 
-  constructor() {
-    this.a = 's';
-  }
-
   showModal = () => {
     this.setState({
       visible: true

@@ -13,3 +13,5 @@ export type GetState = () => counterStateType;
 export type Dispatch = ReduxDispatch<Action>;
 
 export type Store = ReduxStore<GetState, Action>;
+
+export const CALC_ORDER_TOTAL = 'CALC_ORDER_TOTAL';

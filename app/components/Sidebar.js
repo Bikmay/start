@@ -27,14 +27,6 @@ export default class Sidebar extends React.Component<Props> {
                 <span className="nav-text">Clients</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span className="nav-text">nav 3</span>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <Icon type="user" />
-              <span className="nav-text">nav 4</span>
-            </Menu.Item>
           </Menu>
         </Sider>
       </Layout>

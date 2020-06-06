@@ -10,9 +10,8 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
-import { modal } from 'electron-modal';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import UILogic from './components/UILogic';
@@ -85,10 +84,11 @@ const createWindow = async () => {
     }
   });
 
-  mainWindow.on('resize', () => {
-    const size = mainWindow.getSize();
-    console.log(size);
-    UILogic.calculateCountRows(size[1]);
+  const ctx = new Menu();
+  ctx.append(null);
+
+  mainWindow.webContents.on('context-menu', e => {
+    ctx.popup(mainWindow, 0, 0);
   });
 
   mainWindow.on('closed', () => {
@@ -115,7 +115,9 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+});
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the

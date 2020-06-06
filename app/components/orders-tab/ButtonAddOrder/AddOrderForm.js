@@ -1,25 +1,23 @@
 import React from 'react';
 import { Form, Checkbox, Input, Button, Select, InputNumber } from 'antd';
+import connect from 'react-redux';
+import { bindActionCreators } from 'redux';
 import AddOrderModal from './AddOrderModal';
 import styles from './AddOrderForm.css';
 import ConfigLogic from '../../../logic/uilogic/ConfigLogic';
 
+import * as Calc from '../../../actions/calc';
+
 export default class AddOrderForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 0,
-      intermediateCostItem: 1,
-      intermediateNumberOfItems: 1,
-      total: 0
-    };
+    this.state = { total: 0 };
   }
 
-  test = () => {
-    this.state.total =
-      this.state.intermediateCostItem * this.state.intermediateNumberOfItems;
-    this.render();
-  };
+  calculationOrderTotal() {
+    const sum = this.count * this.cost;
+    this.setState({ total: sum });
+  }
 
   render() {
     const layout = {
@@ -45,27 +43,6 @@ export default class AddOrderForm extends React.Component {
       console.log('Failed:', errorInfo);
     };
 
-    // todo rewrite to redux
-    // Calc total
-    // const intermediateCostItem = 0;
-    // const intermediateNumberOfItems = 0;
-    // const total = 0;
-    const onCostChange = newValue => {
-      console.log(this.state.total);
-      this.state.intermediateCostItem = parseInt(newValue || 0, 10);
-      this.state.total =
-        this.state.intermediateCostItem * this.state.intermediateNumberOfItems;
-      console.log(this.state.total);
-      this.render();
-    };
-    const onNumberOfItemsChange = newValue => {
-      console.log(this.state.total);
-      this.state.intermediateNumberOfItems = parseInt(newValue || 0, 10);
-      this.state.total =
-        this.state.intermediateCostItem * this.state.intermediateNumberOfItems;
-      this.render();
-    };
-
     const { Option } = Select;
 
     // Load types items
@@ -83,6 +60,7 @@ export default class AddOrderForm extends React.Component {
     const langsMap = ConfigLogic.getLang();
     const langs = langsMap.map(l => <Option key={l.value}>{l.text}</Option>);
 
+    const { calculationOrderTotal } = this.props;
     return (
       <Form
         {...layout}
@@ -114,26 +92,32 @@ export default class AddOrderForm extends React.Component {
         </Form.Item>
         <Form.Item label="Count items" name="count">
           <InputNumber
+            ref={ref => {
+              this.count = ref;
+            }}
             style={{ width: '100%' }}
-            onChange={onNumberOfItemsChange}
+            onChange={this.calcOrderTotal}
           />
         </Form.Item>
         <Form.Item className="currency" label="Cost for item" name="oc">
           <InputNumber
+            ref={ref => {
+              this.cost = ref;
+            }}
             className={styles.currency}
             style={{
               width: '400px',
               display: 'inline-block',
               'margin-right': '12px'
             }}
-            onChange={this.test}  
+            onChange={this.calcOrderTotal}
           />
           <Select style={{ width: '226px', display: 'inline-block' }}>
             {currency}
           </Select>
         </Form.Item>
         <Form.Item label="Total cost" name="total">
-          {this.state.total}
+          <p>{this.state.total}</p>
         </Form.Item>
       </Form>
     );

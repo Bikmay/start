@@ -1,15 +1,17 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
-import { Table } from 'antd';
+import { Table, Drawer, Button } from 'antd';
 import styles from './Table.css';
 import UILogic from '../UILogic';
+import OrderDrawer from './DrawerOrder/OrderDrawer';
 
-type Props = {};
+TableComponent.propTypes = {
+  openDrawer: PropTypes.func.isRequired
+};
 
-export default class TableComponent extends Component<Props> {
-  props: Props;
-
+export default class TableComponent extends React.Component {
   render() {
     //  console.log(document.body.clientHeight);
     const columns = [
@@ -220,6 +222,20 @@ export default class TableComponent extends Component<Props> {
           pagination={UILogic.obj1}
           columns={columns}
           dataSource={data}
+          onRow={(record, rowIndex) => {
+            return {
+              onClick: event => {
+                console.log('1');
+                this.props.openDrawer(true);
+              }, // click row
+              onDoubleClick: event => {
+                console.log('11');
+              }, // double click row
+              onContextMenu: event => {
+                console.log('true');
+              }
+            };
+          }}
         />
       </div>
     );

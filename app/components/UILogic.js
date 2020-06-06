@@ -3,6 +3,8 @@ export default class UILogic {
 
   static countRows;
 
+  static visibleOrderDrawer = false;
+
   static obj1 = {
     pageSize: 5
   };
@@ -19,5 +21,9 @@ export default class UILogic {
 
   static setWindowHeight(value) {
     this.windowHeight = value;
+  }
+
+  static setVisibleOrderDrawer(value) {
+    this.visibleOrderDrawer = value;
   }
 }
