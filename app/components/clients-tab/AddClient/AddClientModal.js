@@ -5,10 +5,9 @@ import AddClientForm from './AddClientForm';
 import styles from './AddClientModal.css';
 
 export default class AddClientModal extends React.Component {
-  state = { visible: false };
-
   constructor() {
-    this.a = 's';
+    super();
+    this.state = { visible: false };
   }
 
   showModal = () => {

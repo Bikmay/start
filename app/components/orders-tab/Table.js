@@ -2,15 +2,28 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
+import PropTypes from 'prop-types';
 import styles from './Table.css';
 import UILogic from '../UILogic';
 
-type Props = {};
+type Props = {
+  onChangeVisibleDrawer: PropTypes.func.isRequired
+};
 
 export default class TableComponent extends Component<Props> {
   props: Props;
 
+  constructor(props) {
+    super(props);
+    this.handle = this.handle.bind(this);
+  }
+
+  handle() {
+    this.props.onChangeDrawer(true);
+  }
+
   render() {
+    const { onChangeVisibleDrawer } = this.props;
     //  console.log(document.body.clientHeight);
     const columns = [
       {
@@ -220,6 +233,20 @@ export default class TableComponent extends Component<Props> {
           pagination={UILogic.obj1}
           columns={columns}
           dataSource={data}
+          onRow={(record, rowIndex) => {
+            return {
+              onClick: event => {
+                console.log('1');
+                this.handle();
+              }, // click row
+              onDoubleClick: event => {
+                console.log('11');
+              }, // double click row
+              onContextMenu: event => {
+                console.log('true');
+              }
+            };
+          }}
         />
       </div>
     );
