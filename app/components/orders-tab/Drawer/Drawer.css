@@ -1,0 +1,16 @@
+.orderDrawer{
+  height: 30px;
+  position: relative;
+}
+
+.orderDrawer h3{
+  display: inline-block;
+  position: relative;
+}
+
+.orderDrawer p{
+  display: inline-block;
+  font-size: medium;
+  padding: 12px;
+  position: relative;
+}

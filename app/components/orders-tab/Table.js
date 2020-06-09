@@ -5,9 +5,11 @@ import { Table } from 'antd';
 import PropTypes from 'prop-types';
 import styles from './Table.css';
 import UILogic from '../UILogic';
+import Data from '../../data/Data';
+import Fetch from '../../Fetch';
 
 type Props = {
-  onChangeVisibleDrawer: PropTypes.func.isRequired
+  onChangeDrawer: PropTypes.func.isRequired
 };
 
 export default class TableComponent extends Component<Props> {
@@ -16,215 +18,42 @@ export default class TableComponent extends Component<Props> {
   constructor(props) {
     super(props);
     this.handle = this.handle.bind(this);
+    this.logic = this.logic.bind(this);
   }
 
-  handle() {
-    this.props.onChangeDrawer(true);
+  handle(rowIndex) {
+    const orders = this.logic();
+    const title = 'Order';
+    console.log(rowIndex);
+    for (let index = 0; index < orders.length; index++) {
+      const element = orders[index];
+      if (element.key - 1 == rowIndex) {
+        console.log(element.client);
+        this.props.onChangeDrawer(true, element.name, element.client);
+      }
+    }
+  }
+
+  logic() {
+    const orders = Data.getData('orders');
+    const clients = Data.getData('clients');
+    let clientId = 0;
+    for (let i = 0; i < orders.length; i++) {
+      clientId = orders[i].client;
+      for (let j = 0; j < clients.length; j++) {
+        if (clientId == clients[j].key) {
+          orders[i].client = clients[j].name;
+        }
+      }
+    }
+    return orders;
   }
 
   render() {
     const { onChangeVisibleDrawer } = this.props;
     //  console.log(document.body.clientHeight);
-    const columns = [
-      {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name'
-      },
-      {
-        title: 'Client',
-        dataIndex: 'client',
-        key: 'client'
-      },
-      {
-        title: 'Type items',
-        dataIndex: 'type_items',
-        key: 'type_items'
-      },
-      {
-        title: 'Count items',
-        dataIndex: 'count_items',
-        key: 'count_items'
-      },
-      {
-        title: 'Cost of item',
-        dataIndex: 'cost_item',
-        key: 'cost_item'
-      },
-      {
-        title: 'Orders cost',
-        dataIndex: 'order_cost',
-        key: 'order_cost'
-      },
-      {
-        title: 'Priority',
-        dataIndex: 'priority',
-        key: 'priority'
-      }
-    ];
-    const data = [
-      {
-        key: '1',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '2',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '3',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '4',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '5',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '6',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '7',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '8',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '9',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '10',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '11',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '12',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '13',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '14',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '15',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      },
-      {
-        key: '16',
-        name: 'John Brown',
-        client: 32,
-        type_items: 'New York No. 1 Lake Park',
-        count_items: 32,
-        cost_item: 32,
-        order_cost: 32,
-        priority: 32
-      }
-    ];
-
+    const columns = Data.getOrdesColomns();
+    const data = this.logic();
     return (
       <div>
         <Table
@@ -236,12 +65,9 @@ export default class TableComponent extends Component<Props> {
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
-                console.log('1');
-                this.handle();
+                this.handle(rowIndex);
               }, // click row
-              onDoubleClick: event => {
-                console.log('11');
-              }, // double click row
+              onDoubleClick: event => {}, // double click row
               onContextMenu: event => {
                 console.log('true');
               }

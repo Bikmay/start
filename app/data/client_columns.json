@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Name",
+		"dataIndex": "name",
+		"key": "name"
+	},
+	{
+		"title": "Phone",
+		"dataIndex": "phone",
+		"key": "phone"
+	},
+	{
+		"title": "E-mail",
+		"dataIndex": "email",
+		"key": "email"
+	},
+	{
+		"title": "Company",
+		"dataIndex": "company",
+		"key": "company"
+	},
+	{
+		"title": "Country",
+		"dataIndex": "country",
+		"key": "country"
+	},
+	{
+		"title": "Currency",
+		"dataIndex": "currency",
+		"key": "currency"
+	}
+]

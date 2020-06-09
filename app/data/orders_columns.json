@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Name",
+    "dataIndex": "name",
+    "key": "name"
+  },
+  {
+    "title": "Client",
+    "dataIndex": "client",
+    "key": "client"
+  },
+  {
+    "title": "Type items",
+    "dataIndex": "type_items",
+    "key": "type_items"
+  },
+  {
+    "title": "Count items",
+    "dataIndex": "count_items",
+    "key": "count_items"
+  },
+  {
+    "title": "Cost of item",
+    "dataIndex": "cost_item",
+    "key": "cost_item"
+  },
+  {
+    "title": "Orders cost",
+    "dataIndex": "order_cost",
+    "key": "order_cost"
+  },
+  {
+    "title": "Priority",
+    "dataIndex": "priority",
+    "key": "priority"
+  }
+]
